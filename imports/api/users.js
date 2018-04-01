@@ -4,7 +4,7 @@ import { Accounts } from "meteor/accounts-base";
 Accounts.validateNewUser((user) => {   //runs before new user is registered
     const email = user.emails[0].address;
 
-    try {
+    // try {                              //the try catch has been removed because of the simpl-schema-configuration file
         new SimpleSchema({
             email: {
                 type: String,
@@ -13,9 +13,9 @@ Accounts.validateNewUser((user) => {   //runs before new user is registered
         }).validate({
             email
         });
-    } catch (error) {
-        throw new Meteor.Error(400, error.message);
-    }
+    // } catch (error) {
+    //     throw new Meteor.Error(400, error.message);
+    // }
 
     return true;
 })

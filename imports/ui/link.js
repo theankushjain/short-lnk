@@ -18,7 +18,10 @@ class Link extends React.Component{
         e.preventDefault();
         const url= this.refs.url.value.trim();
         if(url){
-            Links.insert({url,userId:Meteor.userId()});
+            //was used with insecure
+                //Links.insert({url,userId:Meteor.userId()});
+            //after removing insecure
+            Meteor.call('links.insert', url);
             this.refs.url.value = "";
         }
        
